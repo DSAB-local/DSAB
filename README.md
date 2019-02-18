@@ -13,7 +13,7 @@ A benchmark intended for testing the performance of various data stream algorith
 
 First, you need to clone this repo, and install the python3 dependencies.
 ```bash
-git clone https://github.com/Yuol96/pku-sketch-benchmark
+git clone https://github.com/DSAB-local/DSAB
 cd pku-sketch-benchmark
 pip3 install -r requirements.txt
 ```
