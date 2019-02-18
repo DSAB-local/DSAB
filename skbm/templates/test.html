@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="{{url_for('static', filename='js/angular.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+	<title>Document</title>
+</head>
+{%raw%}
+<body ng-app="SketchApp">
+	<div ng-controller="datasetController">
+		<input type="text" ng-model="name">
+	</div>
+</body>
+{%endraw%}
+</html>
+<tab></tab>

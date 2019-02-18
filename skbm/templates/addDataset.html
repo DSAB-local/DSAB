@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="addDatasetApp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script src="{{url_for('static', filename='js/angular.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/addDataset.js')}}"></script>
+
+    <title>Data Stream Algorithms Benchmark</title>
+  </head>
+  <body>
+    <header>
+      <nav id='header-nav' class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="navbar-brand">
+              <a href="index.html"><h1>Data Stream Algorithms Benchmark</h1></a>
+            </div><!-- .navbar-brand -->
+          </div><!-- .navbar-header -->
+          <div><a href="https://github.com/DSABenchmark/DSAB" target="_blank">Github</a></div>
+        </div><!-- .container -->
+      </nav><!-- #header-nav -->
+    </header>
+
+    {%raw%}
+    <div id="addDataset-container" class="container" ng-controller="DatasetGeneratorController as dsgc">
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-10"><label for="distriName">Distribution Name</label></div>
+            <div class="col-md-2 right"><a href="https://github.com/Yuol96/pku-sketch-benchmark#generate-new-datasets" target="_blank">Help</a></div>
+          </div>
+          <select id="distriName" class="form-control" ng-model="dsgc.distriName">
+            <option ng-repeat="name in dsgc.distriNameList">{{name}}</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" id="totalNum" placeholder="Total Number" ng-model="dsgc.totalNum">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="distinctNum" placeholder="Distinct Number" ng-model="dsgc.distinctNum">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" id="param1" placeholder="Parameter 1" ng-model="dsgc.param1">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="param2" placeholder="Parameter 2" ng-model="dsgc.param2" ng-if="dsgc.distriName == 'weibull'">
+          </div>
+        </div>
+      </form>
+      <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="dsgc.gen()">Generate!</button>
+      <div class="text-center"><p class="lead" ng-if="dsgc.result">{{dsgc.result}}</p></div>
+
+    </div>
+    {%endraw%}
+    
+    <script src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

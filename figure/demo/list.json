@@ -1,0 +1,56 @@
+[
+  {
+    "file": "demo/a.dat",
+    "y_label": "CDF",
+    "marker": false,
+    "data.n_groups": 2,
+//    "ytick.lim": [0.2, 5],
+//    "ytick.interval": 0.1,
+    "ytick.nbins": 2,
+//    "ytick.log": true,
+    "yticks": [0.7, 0.8],
+    "lines.alpha": 0.7,
+    "grid.horizontal": true,
+    "grid.vertical": true
+  },
+  {
+    "file": "demo/b.dat",
+    "chart.type": "bar",
+    "y_label": "AAE"
+  },
+  {
+    "file": "demo/pivot.dat",
+    "output": "demo/pivot_bar.pdf",
+    "chart.type": "bar",
+    "separator": ",",
+    "pivotTable": true,
+    "pivotTable.category": "Dataset",
+    "pivotTable.independentVariable": "Memory", // x axis
+    "pivotTable.value": "Score", // y axis
+
+    "pivotTable.point": "mean", // default: mean, other: median
+
+    // error bar type:
+    //  min-max: min and max of data
+    //  std: standard deviation
+    //  percentile: 5th and 95th percentile of data
+    "pivotTable.errorBar": "std",
+
+    "grid.horizontal": true
+  },
+  {
+    "file": "demo/pivot.dat",
+    "output": "demo/pivot_line.pdf",
+    "separator": ",",
+    "grid.horizontal": true,
+    "grid.vertical": true,
+
+    "pivotTable": true,
+    "pivotTable.category": "Dataset",
+    "pivotTable.independentVariable": "Memory", // x axis
+    "pivotTable.value": "Score", // y axis
+
+    "pivotTable.point": "mean", // default: mean, other: median
+    "pivotTable.errorBar": "min-max"
+  }
+]

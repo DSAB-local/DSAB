@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" ng-app="addSketchApp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script src="{{url_for('static', filename='js/angular.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/addSketch.js')}}"></script>
+
+    <title>Data Stream Algorithms Benchmark</title>
+  </head>
+  <body>
+    <header>
+      <nav id='header-nav' class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="navbar-brand">
+              <a href="index.html"><h1>Data Stream Algorithms Benchmark</h1></a>
+            </div><!-- .navbar-brand -->
+          </div><!-- .navbar-header -->
+          <div><a href="https://github.com/DSABenchmark/DSAB" target="_blank">Github</a></div>
+        </div><!-- .container -->
+      </nav><!-- #header-nav -->
+    </header>
+
+    {%raw%}
+    <div id="addSketch-container" class="container" ng-controller="scriptController as sc">
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-10"><label for="sketchName"><h2>Sketch Name</h2></label></div>
+            <div class="col-md-2 bottom-right"><a href="https://github.com/Yuol96/pku-sketch-benchmark#add-new-sketch-algorithms" target="_blank">Help</a></div>
+          </div>
+          <input type="text" class="form-control" id="sketchName" aria-describedby="nameHelp" placeholder="Enter the name of your sketch" ng-model="sc.sketchName">
+          <small id="nameHelp" class="form-text text-muted">Your sketch name should be in form of "*Sketch"</small>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button id="add-param-button" type="button" class="btn btn-secondary" ng-click="sc.addParam()">Add a Parameter</button>
+            <form id="param-form">
+              <div class="form-row" ng-repeat="param in sc.params">
+                <div class="col-md-3">
+                  <input type="text" class="form-control" placeholder="ParamName" ng-model="param.field">
+                </div>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" placeholder="Type" ng-model="param.type">
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="Help" ng-model="param.help">
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-danger btn-block" ng-click="sc.removeParam($index)">Remove</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-8"><label for="exampleFormControlTextarea1"><h2>Sketch Code</h2></label></div>
+            <div class="col-md-4 bottom-right"><a href="https://github.com/Yuol96/pku-sketch-benchmark/blob/master/skbm/new_sketch/YourSketchName.h" target="_blank">Code Template</a></div>
+          </div>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Place your code here" ng-model="sc.codeText"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" ng-click="sc.submitCode()">Submit and Compile</button>
+      </form>
+      <textarea class="form-control" placeholder="Compiled Result will show here..." ng-model="sc.result" disabled></textarea>
+    </div>
+    {%endraw%}
+    
+    <script src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
